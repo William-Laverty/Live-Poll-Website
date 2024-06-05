@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin</title>
+        <link rel="stylesheet" href="../css/admin.css"/>
+    </head>
+    <body>
+        <div class="hero-cover">
+            <div class="container">
+                <div class="topnav">
+                    <img src="../assets/CGS_Logo.png" class="logo-navbar" alt="CGS Logo">
+                </div>
+            </div>
+            <div class="hero-container">
+                <form id="pollForm">
+                    <h1 id="welcomeMessage"></h1>
+                    <h2>Current Event: <span id="currentEvent"></span></h2>
+                    <div class="poll-option">
+                        <input type="radio" id="Instrumental" name="pollOption" value="Instrumental">
+                        <label for="Instrumental">Instrumental</label> 
+                    </div>
+                    <div class="poll-option">
+                        <input type="radio" id="Rock" name="pollOption" value="Rock">
+                        <label for="Rock">Rock</label> 
+                    </div>
+                    <div class="poll-option">
+                        <input type="radio" id="4 and 20" name="pollOption" value="4 and 20">
+                        <label for="4 and 20">4 and 20</label> 
+                    </div>
+                    <div class="poll-option">
+                        <input type="radio" id="House Shout" name="pollOption" value="House Shout">
+                        <label for="House Shout">House Shout</label> 
+                    </div>
+                    
+                    <button type="submit">Submit</button>
+                </form>                
+            </div>
+        <script src="../scripts/admin.js"></script>    
+    </body>
+ </html>

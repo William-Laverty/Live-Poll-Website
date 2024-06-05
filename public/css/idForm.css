@@ -1,0 +1,183 @@
+.transition, form button, form .question label, form .question input[type="text"] {
+  -moz-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -o-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -webkit-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+}
+
+* {
+  font-family: Helvetica, sans-serif;
+  font-weight: light;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* Navbar */
+.container {
+  position: absolute;
+  margin: 20px;
+  width: auto;
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Gradient Background for Hero Page */
+.hero-cover {
+  background-image: linear-gradient(135deg, #FBAF15, #F68F1F, #84BDE4, #94C8E9);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+/* Hero Text for front page */
+.hero-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form {
+  position: relative;
+  display: inline-block;
+  min-width: 90vw;
+  max-height: 80vh;
+  box-sizing: border-box;
+  padding: 5vh 5vw; 
+  background-color: white;
+  border-radius: 40px;
+  margin: 0 auto; 
+  overflow-y: auto; 
+}
+
+form h1 {
+  color: #5DA7D4;
+  font-weight: 100;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 15%;
+}
+
+form button {
+  margin-top: 35px;
+  background-color: white;
+  border: 1px solid #5DA7D4;
+  line-height: 0;
+  font-size: 17px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  border-radius: 60px;
+  color: #5DA7D4;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+form button:hover, form button:focus {
+  color: white;
+  background-color: #5DA7D4;
+}
+
+form .question {
+  position: relative;
+  padding: 10px 0;
+}
+
+form .question:first-of-type {
+  padding-top: 0;
+}
+
+form .question:last-of-type {
+  padding-bottom: 0;
+}
+
+form .question label {
+  transform-origin: left center;
+  color: #5DA7D4;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  font-size: 17px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  display: block;
+  position: absolute;
+  margin-top: -40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+form .question input[type="text"] {
+  appearance: none;
+  background-color: none;
+  border: 1px solid #5DA7D4;
+  line-height: 0;
+  font-size: 17px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 60px;
+  color: #5DA7D4;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+form .question input[type="text"]:focus {
+  outline: none;
+  background: #5DA7D4;
+  color: white;
+  margin-top: 30px;
+}
+
+form .question input[type="text"]:valid {
+  margin-top: 30px;
+}
+
+form .question input[type="text"]:focus ~ label {
+  -moz-transform: translate(0, -35px);
+  -ms-transform: translate(0, -35px);
+  -webkit-transform: translate(0, -35px);
+  transform: translate(0, -35px);
+}
+
+form .question input[type="text"]:valid ~ label {
+  text-transform: uppercase;
+  font-style: italic;
+  -moz-transform: translate(5px, -35px) scale(0.6);
+  -ms-transform: translate(5px, -35px) scale(0.6);
+  -webkit-transform: translate(5px, -35px) scale(0.6);
+  transform: translate(5px, -35px) scale(0.6);
+}
+
+/* CGS Logo */
+.logo-navbar {
+  max-width: 150px;
+  max-height: 150px;
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+}

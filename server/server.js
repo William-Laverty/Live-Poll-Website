@@ -143,21 +143,44 @@ app.post('/vote', async (req, res) => {
 
         // Insert a new vote document into the votes collection
         const result = await votesCollection.insertOne({ eventId, optionId });
-
-        if (result.insertedCount > 0) {
+	console.log('Insert result:', result);
+        
+	if (result.acknowledged && result.insertedId) {
             // Increment the vote count for the corresponding poll option in the poll options collection
             const pollOptionsCollection = db.collection('count');
-            const updateResult = await pollOptionsCollection.updateOne(
-                { "eventId": eventId, "options.optionId": optionId },
-   		{ $inc: { "options.$.votes": 1 } },
-   		{ upsert: true }
-            );
+            const eventDocument = await pollOptionsCollection.findOne({ eventId: eventId });
+	    console.log('Event document:', eventDocument);
 
-            if (updateResult.modifiedCount > 0 || updateResult.upsertedCount > 0) {
-                res.json({ success: true, message: 'Vote submitted successfully' });
-            } else {
-                console.error('Failed to update poll option vote count');
-                res.status(500).json({ success: false, message: 'Failed to update poll option vote count' });
+            if (!eventDocument) {
+	    // If event document does not exist, create it
+                const insertResult = await pollOptionsCollection.insertOne({
+		     eventId: eventId,
+	   	     options: [{ optionId: optionId, votes: 1}]  
+                });
+	        res.json({ success: true, message: 'Vote submitted successfully' });
+		console.log('Insert result for event:', insertResult);
+  	    } else { 
+	        // If the event document does exist, check if option exists
+		const optionExists = eventDocument.options.some(option => option.optionId === optionId);
+		console.log('Option exists:', optionExists);
+
+		if (!optionExists) {
+		// If option doesnt exists, add it with vote count
+		     const updateResult = await pollOptionsCollection.updateOne(
+			{ eventId: eventId },
+			{ $push: { options: { optionId: optionId, votes: 1 } } }
+		     );
+		     console.log('Update result for adding option:', updateResult);
+		} else {
+		     // If option exist, increment vote count
+		     const updateResult = await pollOptionsCollection.updateOne(
+			 { eventId: eventId, 'options.optionId': optionId },
+			 { $inc: { 'options.$.votes': 1 } }
+	 	     );
+		     console.log('Update result for incrementing votes:', updateResult);
+		}
+
+		res.json({ success: true, message: 'Vote submitted successfully' });
             }
         } else {
             console.error('Failed to insert vote document');

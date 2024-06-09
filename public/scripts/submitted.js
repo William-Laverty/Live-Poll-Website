@@ -6,3 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html'; // Redirect back if no 
     }
 });
+
+document.getElementById('submitted').addEventListener('submit', function(event) {
+    event.preventDefault();
+    window.location.href = 'results.html';
+});

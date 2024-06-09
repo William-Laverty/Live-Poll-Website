@@ -56,7 +56,10 @@
   
   form {
     position: relative;
-    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     min-width: 90vw;
     max-height: 80vh;
     box-sizing: border-box;
@@ -72,6 +75,28 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 1.5rem;
+  }
+
+  form button {
+    margin-top: 7.5%;
+    background-color: white;
+    border: 1px solid #5DA7D4;
+    line-height: 0;
+    font-size: 17px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px 15px;
+    border-radius: 60px;
+    color: #5DA7D4;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+  }
+  
+  form button:hover, form button:focus {
+    color: white;
+    background-color: #5DA7D4;
   }
   
   /* CGS Logo */

@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.success) {
-                    window.location.href = 'html/submitted.html';
+                    window.location.href = '../html/submitted.html';
                 } else {
                     alert(data.message);
                 }

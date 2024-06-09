@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peoples Choice</title>
     <link rel="stylesheet" href="../css/result.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="hero-cover">
@@ -17,6 +18,9 @@
             <form id="usernameForm">
                 <h1>Live Voting Results</h1>
                 <h2><span id="currentEvent"></span></h2>
+                <div class="chart-container">
+                    <canvas id="results"></canvas>
+                </div>
             </form>
         </div>
         <script src="../scripts/result.js"></script>

@@ -92,3 +92,8 @@
     border: none;
   }
   
+.chart-container {
+    position: relative;
+    min-width: 300px;
+    min-height: 30vh;
+}

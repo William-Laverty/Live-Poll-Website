@@ -192,6 +192,25 @@ app.post('/vote', async (req, res) => {
     }
 });
 
+app.get('/poll-options/:eventId', async (req, res) => {
+    const { eventId } = req.params;
+
+    try {
+        const db = client.db(dbName);
+        const pollOptionsCollection = db.collection('count');
+        const eventOptions = await pollOptionsCollection.findOne({ eventId });
+
+        if (eventOptions && eventOptions.options.length > 0) {
+            res.json({ success: true, options: eventOptions.options });
+        } else {
+            res.json({ success: false, message: 'No poll options found for the current event' });
+        }
+    } catch (error) {
+        console.error('Error fetching poll options:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
 const axios = require('axios'); // Import axios for making HTTP requests
 
 // Function to get the public IP address

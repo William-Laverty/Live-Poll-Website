@@ -13,12 +13,13 @@ document.addEventListener('DOMContentLoaded', async function() {
       const result = await response.json();
 
       if (result.success) {
-          // Extract the vote counts for each option
+          // Extract the option names and vote counts
           const options = result.options;
+          const labels = options.map(option => option.optionId);
           const voteCounts = options.map(option => option.votes);
 
           // Update the chart with the fetched data
-          updateChart(voteCounts);
+          updateChart(labels, voteCounts);
       } else {
           console.error('Failed to fetch poll options:', result.message);
       }
@@ -27,15 +28,15 @@ document.addEventListener('DOMContentLoaded', async function() {
   }
 });
 
-function updateChart(voteCounts) {
+function updateChart(labels, voteCounts) {
   const ctx = document.getElementById('results');
 
   new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ['Blaxland', 'Burgmann', 'Eddison', 'Edwards', 'Garnsey', 'Garran', 'Hay', 'Jones', 'Sheaffe', 'Middleton'],
+          labels: labels,
           datasets: [{
-              label: '',
+              label: 'Votes',
               data: voteCounts,
               backgroundColor: [
                   'rgba(230, 60, 45, 0.8)',

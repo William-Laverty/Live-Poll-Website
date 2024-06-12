@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success && data.options) {
                     const pollOptionsContainer = document.getElementById('pollOptionsContainer');
-                    pollOptionsContainer.innerHTML = ''; // Clear previous options
+                    pollOptionsContainer.innerHTML = ''; 
 
                     fetchUserData(eventId, username)
                         .then(user => {
                             if (user && user[eventId] === true) {
                                 const alreadyVotedMessage = document.createElement('div');
-                                alreadyVotedMessage.textContent = "You have already voted";
+                                alreadyVotedMessage.textContent = `You have already voted for ${eventId}`;
                                 alreadyVotedMessage.classList.add('already-voted');
                                 pollOptionsContainer.appendChild(alreadyVotedMessage);
                             } else {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({
                     eventId: currentEventId,
                     optionId: selectedOptionId,
-                    username: username // Include the username in the request
+                    username: username
                 })
             })
             .then(response => {
@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error submitting vote:', error);
                 alert('An error occurred while submitting your vote');
             });
+        } else if (user && user[eventId] === true) {
+            window.location.href = '../html/results.html';
         } else {
             alert('Please select an option to vote for');
         }

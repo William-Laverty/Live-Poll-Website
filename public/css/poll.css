@@ -259,13 +259,6 @@ form .already-voted {
   cursor: pointer;
 }
 
-form .already-voted label {
+.already-voted {
   text-align: center;
-  flex: 1;
-  color: inherit;
-  font-weight: 100;
-  letter-spacing: 0.01em;
-  font-size: 17px;
-  cursor: pointer;
-  transition: color 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5), margin-left 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5); 
 }

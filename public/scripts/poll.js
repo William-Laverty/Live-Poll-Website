@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 alreadyVotedMessage.textContent = `You have already voted for ${eventId}`;
                                 alreadyVotedMessage.classList.add('already-voted');
                                 pollOptionsContainer.appendChild(alreadyVotedMessage);
-                                hasVoted == true;
+                                hasVoted = true;
                             } else {
                                 data.options.forEach((option, index) => {
                                     // Create a div for each poll option
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error submitting vote:', error);
                 alert('An error occurred while submitting your vote');
             });
-        } else if (hasVoted) {
+        } else if (hasVoted == true) {
             window.location.href = '../html/results.html';
             hasVoted == false;
         } else {

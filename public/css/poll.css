@@ -246,3 +246,25 @@ form .poll-option:hover {
 form .poll-option:hover label {
   color: white;
 }
+
+form .already-voted {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ed5555;
+  border-radius: 30px;
+  transition: background-color 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  cursor: pointer;
+}
+
+form .already-voted label {
+  flex: 1;
+  color: inherit;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  font-size: 17px;
+  cursor: pointer;
+  margin-left: 2.5%;
+  transition: color 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5), margin-left 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5); 
+}

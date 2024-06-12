@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Enable CORS for all routes
 app.use(cors());
 
-// Serv Static
+// Serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
 // MongoDB connection URI
@@ -43,7 +43,7 @@ const dbName = 'HouseMusic';
 const usersCollectionName = 'users';
 const eventsCollectionName = 'events';
 const currentEventCollectionName = 'currentEvent';
-const pollOptionsCollectionName = 'pollOptions'; 
+const pollOptionsCollectionName = 'pollOptions';
 
 app.get('/current-event', async (req, res) => {
     try {
@@ -134,54 +134,80 @@ app.get('/poll-options/:eventId', async (req, res) => {
     }
 });
 
+app.get('/user/:username', async (req, res) => {
+    const { username } = req.params;
+
+    try {
+        const db = client.db(dbName);
+        const usersCollection = db.collection(usersCollectionName);
+        const user = await usersCollection.findOne({ id: username });
+
+        if (user) {
+            res.json({ success: true, user });
+        } else {
+            res.status(404).json({ success: false, message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
 app.post('/vote', async (req, res) => {
-    const { eventId, optionId } = req.body;
+    const { eventId, optionId, username } = req.body;
 
     try {
         const db = client.db(dbName);
         const votesCollection = db.collection('votes');
+        const usersCollection = db.collection(usersCollectionName);
 
         // Insert a new vote document into the votes collection
         const result = await votesCollection.insertOne({ eventId, optionId });
-	console.log('Insert result:', result);
+        console.log('Insert result:', result);
         
-	if (result.acknowledged && result.insertedId) {
+        if (result.acknowledged && result.insertedId) {
             // Increment the vote count for the corresponding poll option in the poll options collection
             const pollOptionsCollection = db.collection('count');
             const eventDocument = await pollOptionsCollection.findOne({ eventId: eventId });
-	    console.log('Event document:', eventDocument);
+            console.log('Event document:', eventDocument);
 
             if (!eventDocument) {
-	    // If event document does not exist, create it
+                // If event document does not exist, create it
                 const insertResult = await pollOptionsCollection.insertOne({
-		     eventId: eventId,
-	   	     options: [{ optionId: optionId, votes: 1}]  
+                    eventId: eventId,
+                    options: [{ optionId: optionId, votes: 1 }]  
                 });
-	        res.json({ success: true, message: 'Vote submitted successfully' });
-		console.log('Insert result for event:', insertResult);
-  	    } else { 
-	        // If the event document does exist, check if option exists
-		const optionExists = eventDocument.options.some(option => option.optionId === optionId);
-		console.log('Option exists:', optionExists);
+                console.log('Insert result for event:', insertResult);
+            } else { 
+                // If the event document does exist, check if option exists
+                const optionExists = eventDocument.options.some(option => option.optionId === optionId);
+                console.log('Option exists:', optionExists);
 
-		if (!optionExists) {
-		// If option doesnt exists, add it with vote count
-		     const updateResult = await pollOptionsCollection.updateOne(
-			{ eventId: eventId },
-			{ $push: { options: { optionId: optionId, votes: 1 } } }
-		     );
-		     console.log('Update result for adding option:', updateResult);
-		} else {
-		     // If option exist, increment vote count
-		     const updateResult = await pollOptionsCollection.updateOne(
-			 { eventId: eventId, 'options.optionId': optionId },
-			 { $inc: { 'options.$.votes': 1 } }
-	 	     );
-		     console.log('Update result for incrementing votes:', updateResult);
-		}
-
-		res.json({ success: true, message: 'Vote submitted successfully' });
+                if (!optionExists) {
+                    // If option doesn't exist, add it with vote count
+                    const updateResult = await pollOptionsCollection.updateOne(
+                        { eventId: eventId },
+                        { $push: { options: { optionId: optionId, votes: 1 } } }
+                    );
+                    console.log('Update result for adding option:', updateResult);
+                } else {
+                    // If option exists, increment vote count
+                    const updateResult = await pollOptionsCollection.updateOne(
+                        { eventId: eventId, 'options.optionId': optionId },
+                        { $inc: { 'options.$.votes': 1 } }
+                    );
+                    console.log('Update result for incrementing votes:', updateResult);
+                }
             }
+
+            // Update the user's boolean value for the event
+            const updateUserResult = await usersCollection.updateOne(
+                { id: username },
+                { $set: { [eventId]: true } }
+            );
+            console.log('Update result for user:', updateUserResult);
+
+            res.json({ success: true, message: 'Vote submitted successfully' });
         } else {
             console.error('Failed to insert vote document');
             res.status(500).json({ success: false, message: 'Failed to insert vote document' });

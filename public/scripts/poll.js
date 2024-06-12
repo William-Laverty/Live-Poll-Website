@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const name = localStorage.getItem('name');
-    if (name) {
+    const username = localStorage.getItem('username'); // Assume username is stored in localStorage
+    if (name && username) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${name}`;
     } else {
         window.location.href = 'index.html'; // Redirect back if no name
@@ -42,36 +43,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.success && data.options) {
                     const pollOptionsContainer = document.getElementById('pollOptionsContainer');
                     pollOptionsContainer.innerHTML = ''; // Clear previous options
-                    data.options.forEach((option, index) => {
-                        // Create a div for each poll option
-                        const pollOptionDiv = document.createElement('div');
-                        pollOptionDiv.classList.add('poll-option');
 
-                        // Create the radio input element
-                        const input = document.createElement('input');
-                        input.setAttribute('type', 'radio');
-                        input.setAttribute('name', 'pollOption');
-                        input.setAttribute('value', option);
-                        input.setAttribute('id', `radio${index + 1}`);
+                    fetchUserData(eventId, username)
+                        .then(user => {
+                            if (user && user[eventId] === true) {
+                                const alreadyVotedMessage = document.createElement('div');
+                                alreadyVotedMessage.textContent = "You have already voted";
+                                alreadyVotedMessage.classList.add('already-voted');
+                                pollOptionsContainer.appendChild(alreadyVotedMessage);
+                            } else {
+                                data.options.forEach((option, index) => {
+                                    // Create a div for each poll option
+                                    const pollOptionDiv = document.createElement('div');
+                                    pollOptionDiv.classList.add('poll-option');
 
-                        // Create the label element
-                        const label = document.createElement('label');
-                        label.setAttribute('for', `radio${index + 1}`);
-                        label.textContent = option;
+                                    // Create the radio input element
+                                    const input = document.createElement('input');
+                                    input.setAttribute('type', 'radio');
+                                    input.setAttribute('name', 'pollOption');
+                                    input.setAttribute('value', option);
+                                    input.setAttribute('id', `radio${index + 1}`);
 
-                        // Append the input and label to the poll option div
-                        pollOptionDiv.appendChild(input);
-                        pollOptionDiv.appendChild(label);
+                                    // Create the label element
+                                    const label = document.createElement('label');
+                                    label.setAttribute('for', `radio${index + 1}`);
+                                    label.textContent = option;
 
-                        // Append the poll option div to the poll options container
-                        pollOptionsContainer.appendChild(pollOptionDiv);
-                    });
+                                    // Append the input and label to the poll option div
+                                    pollOptionDiv.appendChild(input);
+                                    pollOptionDiv.appendChild(label);
+
+                                    // Append the poll option div to the poll options container
+                                    pollOptionsContainer.appendChild(pollOptionDiv);
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching user data:', error);
+                        });
                 } else {
                     console.error('Error fetching poll options:', data.message);
                 }
             })
             .catch(error => {
                 console.error('Error fetching poll options:', error);
+            });
+    }
+
+    function fetchUserData(eventId, username) {
+        return fetch(`https://3.107.27.254:443/user/${username}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success && data.user) {
+                    return data.user;
+                } else {
+                    throw new Error('User data not found');
+                }
             });
     }
 
@@ -92,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     eventId: currentEventId,
-                    optionId: selectedOptionId
+                    optionId: selectedOptionId,
+                    username: username // Include the username in the request
                 })
             })
             .then(response => {

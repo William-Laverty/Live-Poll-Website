@@ -267,6 +267,5 @@ form .already-voted label {
   letter-spacing: 0.01em;
   font-size: 17px;
   cursor: pointer;
-  margin-left: 2.5%;
   transition: color 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5), margin-left 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5); 
 }

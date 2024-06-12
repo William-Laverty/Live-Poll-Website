@@ -260,6 +260,7 @@ form .already-voted {
 }
 
 form .already-voted label {
+  text-align: center;
   flex: 1;
   color: inherit;
   font-weight: 100;

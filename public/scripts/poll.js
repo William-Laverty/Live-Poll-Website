@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const name = localStorage.getItem('name');
     const username = localStorage.getItem('username'); 
-    const hasVoted = false;
+    var hasVoted = false;
 
     if (name && username) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${name}`;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 alreadyVotedMessage.textContent = `You have already voted for ${eventId}`;
                                 alreadyVotedMessage.classList.add('already-voted');
                                 pollOptionsContainer.appendChild(alreadyVotedMessage);
-                                hasVoted = true;
+                                hasVoted == true;
                             } else {
                                 data.options.forEach((option, index) => {
                                     // Create a div for each poll option
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } else if (hasVoted) {
             window.location.href = '../html/results.html';
-            hasVoted = false;
+            hasVoted == false;
         } else {
             alert('Please select an option to vote for');
         }

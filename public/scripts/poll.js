@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const name = localStorage.getItem('name');
-    const username = localStorage.getItem('username'); // Assume username is stored in localStorage
+    const username = localStorage.getItem('username'); 
+    const user = null;
+
     if (name && username) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${name}`;
     } else {
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     fetchUserData(eventId, username)
                         .then(user => {
                             if (user && user[eventId] === true) {
+                                user = user;
                                 const alreadyVotedMessage = document.createElement('div');
                                 alreadyVotedMessage.textContent = `You have already voted for ${eventId}`;
                                 alreadyVotedMessage.classList.add('already-voted');
@@ -147,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } else if (user && user[eventId] === true) {
             window.location.href = '../html/results.html';
+            user = null;
         } else {
             alert('Please select an option to vote for');
         }

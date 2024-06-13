@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (name) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${name}`;
     } else {
-        window.location.href = 'index.html'; // Redirect back if no name
+        window.location.href = 'index.html'; 
     }
 
     function fetchCurrentEvent() {

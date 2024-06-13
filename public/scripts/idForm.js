@@ -4,7 +4,7 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
     const username = document.getElementById('username').value;
     const lastName = document.getElementById('lastName').value;
 
-    fetch('https://3.107.27.254:443/verify-user', { // Send request to server
+    fetch('https://3.107.27.254:443/verify-user', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,9 +24,9 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
             localStorage.setItem('isAdmin', data.isAdmin);
 
             if (!data.isAdmin) {
-                window.location.href = 'html/poll.html'; // Redirect to poll page
+                window.location.href = 'html/poll.html'; 
             } else {
-                window.location.href = 'html/admin.html'; // Redirect to admin page
+                window.location.href = 'html/admin.html';
             }
         } else {
             alert(data.message);

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event) {
         document.getElementById('welcomeMessage').textContent = `Your vote for ${event} has been submitted!`;
     } else {
-        window.location.href = 'index.html'; // Redirect back if no 
+        window.location.href = 'index.html'; 
     }
 });
 

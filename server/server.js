@@ -11,11 +11,8 @@ const port = 443;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Enable CORS for all routes
 app.use(cors());
 
-// Serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
 // MongoDB connection URI
@@ -27,7 +24,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 
-// Connect to MongoDB Atlas cluster
 async function connectToMongoDB() {
     try {
         await client.connect();
@@ -38,7 +34,6 @@ async function connectToMongoDB() {
 }
 connectToMongoDB();
 
-// MongoDB database and collection names
 const dbName = 'HouseMusic';
 const usersCollectionName = 'users';
 const eventsCollectionName = 'events';
@@ -237,13 +232,12 @@ app.get('/votes/:eventId', async (req, res) => {
     }
 });
 
-const axios = require('axios'); // Import axios for making HTTP requests
+const axios = require('axios'); 
 
-// Function to get the public IP address
 async function getPublicIp() {
     try {
         const response = await axios.get('https://ifconfig.me/ip');
-        return response.data.trim(); // Trim any whitespace
+        return response.data.trim();
     } catch (error) {
         console.error('Error fetching public IP:', error);
         return null;
@@ -255,10 +249,8 @@ const privateKey = fs.readFileSync(path.join(__dirname, 'privateKey.key'), 'utf8
 const certificate = fs.readFileSync(path.join(__dirname, 'certificate.crt'), 'utf8');
 const credentials = { key: privateKey, cert: certificate };
 
-// Create HTTPS server
 const httpsServer = https.createServer(credentials, app);
 
-// Get the public IP and log the server start message
 getPublicIp().then(publicIp => {
     if (publicIp) {
         console.log(`Server is running on https://${publicIp}:${port}`);

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (name && username) {
         document.getElementById('welcomeMessage').textContent = `Welcome, ${name}`;
     } else {
-        window.location.href = 'index.html'; // Redirect back if no name
+        window.location.href = 'index.html'; 
     }
 
     function fetchCurrentEvent() {
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentEventId = localStorage.getItem('currentEvent');
         if (selectedOption) {
             const selectedOptionId = selectedOption.value;
-            // Send a POST request to submit the vote
             fetch('https://3.107.27.254:443/vote', {
                 method: 'POST',
                 headers: {

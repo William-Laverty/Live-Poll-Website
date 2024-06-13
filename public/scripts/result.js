@@ -2,19 +2,11 @@ document.addEventListener('DOMContentLoaded', async function() {
   const event = localStorage.getItem('currentEvent');
   if (event) {
       document.getElementById('currentEvent').textContent = `${event}`;
-      try {
-          const response = await fetch(`/votes/${event}`);
-          const data = await response.json();
-          
-          if (data.success) {
-              const votes = data.options.map(option => option.votes);
-              updateChart(votes);
-          } else {
-              console.error('Failed to fetch votes:', data.message);
-          }
-      } catch (error) {
-          console.error('Error fetching votes:', error);
-      }
+      fetchAndUpdateVotes(event);
+
+      setInterval(() => {
+          fetchAndUpdateVotes(event);
+      }, 5000);
   } else {
       window.location.href = 'index.html';
   }
@@ -28,7 +20,7 @@ data: {
   labels: ['Blaxland', 'Burgmann', 'Eddison', 'Edwards', 'Garnsey', 'Garran', 'Hay', 'Jones', 'Sheaffe', 'Middleton'],
   datasets: [{
     label: '',
-    data: [],  // Initially empty, will be populated with votes
+    data: [],
     backgroundColor: [
       'rgba(230, 60, 45, 0.8)',
       'rgba(252, 204, 0, 0.9)',
@@ -72,6 +64,22 @@ options: {
   }
 }
 });
+
+async function fetchAndUpdateVotes(event) {
+  try {
+      const response = await fetch(`/votes/${event}`);
+      const data = await response.json();
+
+      if (data.success) {
+          const votes = data.options.map(option => option.votes);
+          updateChart(votes);
+      } else {
+          console.error('Failed to fetch votes:', data.message);
+      }
+  } catch (error) {
+      console.error('Error fetching votes:', error);
+  }
+}
 
 function updateChart(votes) {
   chart.data.datasets[0].data = votes;

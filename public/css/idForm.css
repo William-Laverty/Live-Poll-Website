@@ -177,8 +177,8 @@ form .question input[type="text"]:valid ~ label {
   max-height: 150px;
   position: fixed;
   bottom: 40px;
-  left: 25%;
-  transform: translateX(-75%);
+  left: 35%;
+  transform: translateX(-65%);
   border: none;
 }
 
@@ -186,8 +186,8 @@ form .question input[type="text"]:valid ~ label {
   max-width: 150px;
   max-height: 150px;
   position: fixed;
-  bottom: 40px;
-  left: 75%;
-  transform: translateX(-25%);
+  bottom: 30px;
+  left: 65%;
+  transform: translateX(-35%);
   border: none;
 }

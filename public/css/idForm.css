@@ -185,6 +185,18 @@ form .question input[type="text"]:valid ~ label {
   transition: opacity 2s;
 }
 
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-logo {
+  position: static;
+  margin: 0 auto 20px auto;
+}
+
 .wl-navbar {
   max-width: 175px;
   max-height: 175px;

@@ -7,8 +7,10 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
     const logoNavbar = document.getElementById('logoNavbar');
     const usernameForm = document.getElementById('usernameForm');
 
+    // Start form fade out
     usernameForm.style.opacity = 0;
     
+    // After form fades out, show logo again
     setTimeout(() => {
         usernameForm.classList.add('hidden');
         logoNavbar.classList.remove('hidden');
@@ -16,9 +18,11 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
             logoNavbar.style.opacity = 1;
             logoNavbar.style.transform = 'translate(-50%, -50%) scale(1.2)';
             
+            // After logo fades back in, fade it out and then navigate
             setTimeout(() => {
                 logoNavbar.style.opacity = 0;
 
+                // Navigate to the next page after logo fades out
                 setTimeout(() => {
                     fetch('https://3.107.27.254:443/verify-user', { 
                         method: 'POST',
@@ -46,19 +50,21 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
                             }
                         } else {
                             alert(data.message);
+                            // Re-show the form if verification fails
                             usernameForm.classList.remove('hidden');
                             usernameForm.style.opacity = 1;
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        // Re-show the form if there's an error
                         usernameForm.classList.remove('hidden');
                         usernameForm.style.opacity = 1;
                     });
-                }, 2000);
-            }, 2000); 
-        }, 50); 
-    }, 2000);
+                }, 2000); // Wait for logo to fade out before navigating
+            }, 2000); // Time for logo to stay visible before fading out
+        }, 50); // Slight delay before starting logo fade in
+    }, 2000); // Time for form to fade out
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setTimeout(() => {
         logoNavbar.style.opacity = 1;
-        logoNavbar.style.transform = 'translate(-50%, -50%) scale(2)';
+        logoNavbar.style.transform = 'translate(-50%, -50%) scale(3)';
     }, 2000);
     
     setTimeout(() => {

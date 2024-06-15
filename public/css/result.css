@@ -87,8 +87,8 @@
     max-height: 150px;
     position: fixed;
     bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 35%;
+    transform: translateX(-65%);
     border: none;
   }
 
@@ -96,7 +96,7 @@
     max-width: 150px;
     max-height: 150px;
     position: fixed;
-    bottom: 40px;
+    bottom: 35px;
     left: 65%;
     transform: translateX(-35%);
     border: none;

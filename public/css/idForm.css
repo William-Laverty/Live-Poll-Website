@@ -176,9 +176,9 @@ form .question input[type="text"]:valid ~ label {
   max-width: 150px;
   max-height: 150px;
   position: fixed;
-  bottom: 40px;
+  /* bottom: 40px;
   left: 35%;
-  transform: translateX(-65%);
+  transform: translateX(-65%); */
   border: none;
 }
 

@@ -69,7 +69,7 @@ form {
   }
 
 form h1 {
-    color: #5DA7D4;
+    color: #d52bb0;
     font-weight: 100;
     text-align: center;
     text-transform: uppercase;
@@ -79,7 +79,7 @@ form h1 {
  
 form h2 {
     font-size: 1rem;
-    color: #0d4a6f;
+    color: #8a0b6f;
     text-align: center;
     margin-bottom: 5%;
 }
@@ -87,14 +87,14 @@ form h2 {
 form button {
     margin-top: 35px;
     background-color: white;
-    border: 1px solid #5DA7D4;
+    border: 1px solid #d52bb0;
     line-height: 0;
     font-size: 17px;
     display: inline-block;
     box-sizing: border-box;
     padding: 20px 15px;
     border-radius: 60px;
-    color: #5DA7D4;
+    color: #d52bb0;
     font-weight: 100;
     letter-spacing: 0.01em;
     position: relative;
@@ -103,7 +103,7 @@ form button {
 
 form button:hover, form button:focus {
     color: white;
-    background-color: #5DA7D4;
+    background-color: #d52bb0;
 }
 
 form .question {
@@ -121,7 +121,7 @@ form .question:last-of-type {
 
 form .question label {
     transform-origin: left center;
-    color: #5DA7D4;
+    color: #d52bb0;
     font-weight: 100;
     letter-spacing: 0.01em;
     font-size: 17px;
@@ -137,7 +137,7 @@ form .question label {
 form .question input[type="text"] {
     appearance: none;
     background-color: none;
-    border: 1px solid #5DA7D4;
+    border: 1px solid #d52bb0;
     line-height: 0;
     font-size: 17px;
     width: 100%;
@@ -145,7 +145,7 @@ form .question input[type="text"] {
     box-sizing: border-box;
     padding: 10px 15px;
     border-radius: 60px;
-    color: #5DA7D4;
+    color: #d52bb0;
     font-weight: 100;
     letter-spacing: 0.01em;
     position: relative;
@@ -154,7 +154,7 @@ form .question input[type="text"] {
 
 form .question input[type="text"]:focus {
     outline: none;
-    background: #5DA7D4;
+    background: #d52bb0;
     color: white;
     margin-top: 30px;
 }
@@ -196,7 +196,7 @@ form .poll-option {
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid #5DA7D4;
+    border: 1px solid #d52bb0;
     border-radius: 30px;
     transition: background-color 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
     cursor: pointer;
@@ -212,13 +212,13 @@ form .poll-option input[type="radio"]:checked + label {
 }
 
 form .poll-option input[type="radio"]::after + label {
-    color: #5DA7D4;
+    color: #d52bb0;
 }
 
 
 form .poll-option label {
     flex: 1;
-    color: #5DA7D4;
+    color: #d52bb0;
     font-weight: 100;
     letter-spacing: 0.01em;
     font-size: 17px;
@@ -227,7 +227,7 @@ form .poll-option label {
 }
 
 form .poll-option:hover {
-    background-color: #5DA7D4;
+    background-color: #d52bb0;
     color: white;
 }
 

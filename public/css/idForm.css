@@ -189,7 +189,7 @@ form .question input[type="text"]:valid ~ label {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(3);
   transition: transform 2s, opacity 2s;
 }
 

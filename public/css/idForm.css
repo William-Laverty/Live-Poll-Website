@@ -181,3 +181,13 @@ form .question input[type="text"]:valid ~ label {
   transform: translateX(-50%);
   border: none;
 }
+
+.wl-navbar {
+  max-width: 150px;
+  max-height: 150px;
+  position: fixed;
+  bottom: 30px;
+  left: 75%;
+  transform: translateX(-25%);
+  border: none;
+}

@@ -91,6 +91,16 @@
     transform: translateX(-50%);
     border: none;
   }
+
+  .wl-navbar {
+    max-width: 150px;
+    max-height: 150px;
+    position: fixed;
+    bottom: 40px;
+    left: 65%;
+    transform: translateX(-35%);
+    border: none;
+  }  
   
 .chart-container {
     position: relative;

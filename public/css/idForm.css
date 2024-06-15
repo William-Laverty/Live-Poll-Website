@@ -177,6 +177,9 @@ form .question input[type="text"]:valid ~ label {
   max-height: 150px;
   position: relative;
   border: none;
+
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .wl-navbar {

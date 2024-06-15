@@ -36,3 +36,25 @@ document.getElementById('usernameForm').addEventListener('submit', function(even
         console.error('Error:', error);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const heroCover = document.getElementById('heroCover');
+    const logoNavbar = document.getElementById('logoNavbar');
+    const usernameForm = document.getElementById('usernameForm');
+    const heroContainer = document.getElementById('heroContainer');
+
+    // Step 1: Animate the gradient in
+    heroCover.style.opacity = 1;
+
+    // Step 2: Fade in the CGS logo
+    setTimeout(() => {
+        logoNavbar.style.opacity = 1;
+    }, 2000); // Delay for 2 seconds after the gradient is fully visible
+
+    // Step 3: Fade in the rest of the content
+    setTimeout(() => {
+        logoNavbar.classList.add('hidden');
+        usernameForm.style.opacity = 1;
+        usernameForm.classList.remove('hidden');
+    }, 4000); // Delay for another 2 seconds after the logo is fully visible
+});

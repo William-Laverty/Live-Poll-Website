@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="../css/idForm.css"/>
 </head>
 <body>
-    <div class="hero-cover">
+    <div class="hero-cover" id="heroCover">
         <div class="container">
             <div class="topnav">
                 <img src="../assets/WL.png" class="wl-navbar" alt="WL Logo">
             </div>
         </div>
-        <div class="hero-container">
-            <form id="usernameForm">
-                <img src="../assets/CGS_Logo.png" class="logo-navbar" alt="CGS Logo">
+        <div class="hero-container" id="heroContainer">
+            <img src="../assets/CGS_Logo.png" class="logo-navbar" id="logoNavbar" alt="CGS Logo">
+            <form id="usernameForm" class="hidden">
                 <div class="question">
                   <input type="text" id="username" name="username" required>
                   <label>CGS ID</label>
@@ -29,5 +29,6 @@
         </div>
     </div>
     <script src="../scripts/idForm.js"></script>
+    <script src="../scripts/animations.js"></script>
 </body>
 </html>

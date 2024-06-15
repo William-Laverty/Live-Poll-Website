@@ -44,6 +44,8 @@ body, html {
   height: 100%;
   width: 100%;
   position: fixed;
+  opacity: 0;
+  transition: opacity 2s;
 }
 
 /* Hero Text for front page */
@@ -65,6 +67,8 @@ form {
   border-radius: 40px;
   margin: 0 auto; 
   overflow-y: auto; 
+  opacity: 0;
+  transition: opacity 2s;
 }
 
 form h1 {
@@ -177,6 +181,8 @@ form .question input[type="text"]:valid ~ label {
   max-height: 150px;
   display: block;
   margin: 0 auto 20px auto;
+  opacity: 0;
+  transition: opacity 2s;
 }
 
 .wl-navbar {
@@ -187,4 +193,8 @@ form .question input[type="text"]:valid ~ label {
   left: 50%;
   transform: translateX(-50%);
   border: none;
+}
+
+.hidden {
+  display: none;
 }

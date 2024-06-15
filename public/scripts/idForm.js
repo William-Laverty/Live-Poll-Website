@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setTimeout(() => {
         logoNavbar.style.opacity = 1;
-        logoNavbar.style.transform = 'translate(-50%, -50%) scale(3)';
+        logoNavbar.style.transform = 'translate(-50%, -50%) scale(2)';
     }, 2000);
     
     setTimeout(() => {

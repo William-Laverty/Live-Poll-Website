@@ -175,11 +175,8 @@ form .question input[type="text"]:valid ~ label {
 .logo-navbar {
   max-width: 150px;
   max-height: 150px;
-  position: relative;
-  border: none;
-  left: 50%;
-  text-align: center;
-  margin-bottom: 10px;
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
 .wl-navbar {

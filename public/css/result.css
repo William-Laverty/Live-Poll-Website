@@ -1,109 +1,124 @@
-.transition, form button, form .question label, form .question input[type="text"] {
-    -moz-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
-    -o-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
-    -webkit-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
-    transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 5px #d52bb0, 0 0 10px #d52bb0, 0 0 15px #d52bb0, 0 0 20px #d52bb0;
   }
-  
-  * {
-    font-family: Helvetica, sans-serif;
-    font-weight: light;
-    -webkit-font-smoothing: antialiased;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  50% {
+      box-shadow: 0 0 10px #d52bb0, 0 0 20px #d52bb0, 0 0 30px #d52bb0, 0 0 40px #d52bb0;
   }
-  
-  body, html {
-    height: 100%;
-    margin: 0;
+  100% {
+      box-shadow: 0 0 5px #d52bb0, 0 0 10px #d52bb0, 0 0 15px #d52bb0, 0 0 20px #d52bb0;
   }
-  
-  /* Navbar */
-  .container {
-    position: absolute;
-    margin: 20px;
-    width: auto;
-  }
-  
-  .topnav {
-    overflow: hidden;
-  }
-  
-  .topnav a {
-    float: left;
-    text-align: center;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  /* Gradient Background for Hero Page */
-  .hero-cover {
-    background-image: linear-gradient(135deg, #04003e, #c41f83, #472975);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-  }
-  
-  /* Hero Text for front page */
-  .hero-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  form {
-    position: relative;
-    display: inline-block;
-    min-width: 90vw;
-    max-height: 80vh;
-    box-sizing: border-box;
-    padding: 5vh 5vw; 
-    background-color: white;
-    border-radius: 40px;
-    margin: 0 auto; 
-  }
-  
-  form h1 {
-    color: #d52bb0;
-    font-weight: 100;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    margin-bottom: -0.5%;
-  }
-  
-  form h2 {
-    font-size: 1rem;
-    color: #4c2783;
-    text-align: center;
-    margin-bottom: 7.5%;
-  }
-  /* CGS Logo */
-  .logo-navbar {
-    max-width: 150px;
-    max-height: 150px;
-    position: fixed;
-    bottom: 40px;
-    left: 35%;
-    transform: translateX(-65%);
-    border: none;
-  }
+}
 
-  .wl-navbar {
-    max-width: 150px;
-    max-height: 150px;
-    position: fixed;
-    bottom: 40px;
-    left: 65%;
-    transform: translateX(-35%);
-    border: none;
-  }  
-  
+form {
+  position: relative;
+  display: inline-block;
+  min-width: 90vw;
+  max-height: 80vh;
+  box-sizing: border-box;
+  padding: 5vh 5vw;
+  background-color: white;
+  border-radius: 40px;
+  margin: 0 auto;
+  border: 2px solid #d52bb0;
+  animation: glow 4s ease-in-out infinite;
+}
+
+.transition, form button, form .question label, form .question input[type="text"] {
+  -moz-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -o-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -webkit-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+}
+
+* {
+  font-family: Helvetica, sans-serif;
+  font-weight: light;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* Navbar */
+.container {
+  position: absolute;
+  margin: 20px;
+  width: auto;
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Gradient Background for Hero Page */
+.hero-cover {
+  background-image: linear-gradient(135deg, #04003e, #c41f83, #472975);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+/* Hero Text for front page */
+.hero-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form h1 {
+  color: #d52bb0;
+  font-weight: 100;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: -0.5%;
+}
+
+form h2 {
+  font-size: 1rem;
+  color: #4c2783;
+  text-align: center;
+  margin-bottom: 7.5%;
+}
+
+/* CGS Logo */
+.logo-navbar {
+  max-width: 150px;
+  max-height: 150px;
+  position: fixed;
+  bottom: 40px;
+  left: 35%;
+  transform: translateX(-65%);
+  border: none;
+}
+
+.wl-navbar {
+  max-width: 150px;
+  max-height: 150px;
+  position: fixed;
+  bottom: 40px;
+  left: 65%;
+  transform: translateX(-35%);
+  border: none;
+}
+
 .chart-container {
-    position: relative;
-    min-width: 300px;
-    min-height: 30vh;
+  position: relative;
+  min-width: 300px;
+  min-height: 30vh;
 }

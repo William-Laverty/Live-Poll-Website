@@ -43,16 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameForm = document.getElementById('usernameForm');
     const formLogo = document.querySelector('.form-logo');
 
-    // Step 1: Animate the gradient in
     heroCover.style.opacity = 1;
 
-    // Step 2: Fade in the CGS logo with larger size
     setTimeout(() => {
         logoNavbar.style.opacity = 1;
         logoNavbar.style.transform = 'translate(-50%, -50%) scale(3)';
-    }, 2000); // Delay for 2 seconds after the gradient is fully visible
-
-    // Step 3: Fade out the center logo and fade in the form
+    }, 2000);
+    
     setTimeout(() => {
         logoNavbar.style.opacity = 0;
         setTimeout(() => {
@@ -60,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
             usernameForm.classList.remove('hidden');
             setTimeout(() => {
                 usernameForm.style.opacity = 1;
-            }, 50); // Small delay to ensure class removal is processed before opacity change
-            formLogo.style.opacity = 1; // Show the logo inside the form
-        }, 2000); // Delay for the logo fade-out transition
-    }, 4000); // Delay for another 2 seconds after the logo fade-in
+            }, 50);
+            formLogo.style.opacity = 1;
+        }, 2000); 
+    }, 4000);    
 });
 

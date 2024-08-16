@@ -1,4 +1,4 @@
-# HouseMusic Voting App
+# Live Poll Website (Designed for CGS House Music Competition)
 
 ## Overview
 
